@@ -4,9 +4,11 @@
   "package": "me.collinb.dynamicview.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
-  "mixins": [],
   "client": [
-    "MixinMinecraft"
+    "CameraMixin",
+    "LocalPlayerMixin",
+    "MinecraftMixin",
+    "EntityAccessor"
   ],
   "server": [],
   "injectors": {
