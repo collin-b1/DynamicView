@@ -1,0 +1,10 @@
+{
+  "text.autoconfig.dynamicview.option.enabledContexts": "Enabled Contexts",
+  "text.autoconfig.dynamicview.option.enabledContexts.swimming": "Swimming",
+  "text.autoconfig.dynamicview.option.enabledContexts.crawling": "Crawling",
+  "text.autoconfig.dynamicview.option.enabledContexts.flying": "Flying",
+  "text.autoconfig.dynamicview.option.enabledContexts.riding": "Riding",
+  "text.autoconfig.dynamicview.option.animationEnabled": "Enable Zoom Animation",
+  "text.autoconfig.dynamicview.option.animationEnterEasing": "Animation Enter Easing",
+  "text.autoconfig.dynamicview.option.animationExitEasing": "Animation Exit Easing"
+}

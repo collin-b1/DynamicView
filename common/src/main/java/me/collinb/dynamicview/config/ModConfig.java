@@ -15,14 +15,15 @@ public class ModConfig implements ConfigData {
     }
 
     @ConfigEntry.Gui.CollapsibleObject
-    EnabledContexts enabledContexts = new EnabledContexts();
+    public EnabledContexts enabledContexts = new EnabledContexts();
     public static class EnabledContexts {
-        boolean swimming = true;
-        boolean crawling = true;
-        boolean flying = true;
-        boolean riding = true;
+        public boolean swimming = true;
+        public boolean crawling = true;
+        public boolean flying = true;
+        public boolean riding = true;
     }
 
-    boolean animationEnabled = true;
-    double easing = 0.2;
+    public boolean animationEnabled = true;
+    public float animationEnterEasing = 0.2f;
+    public float animationExitEasing = 0.6f;
 }
