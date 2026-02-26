@@ -8,8 +8,8 @@
     "${mod_author}"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/collin-b1/DynamicView",
+    "sources": "https://github.com/collin-b1/DynamicView"
   },
   "license": "${license}",
   "icon": "${mod_id}.png",
@@ -17,6 +17,9 @@
   "entrypoints": {
     "client": [
       "me.collinb.dynamicview.DynamicViewFabric"
+    ],
+    "modmenu": [
+      "me.collinb.dynamicview.ModMenuIntegration"
     ]
   },
   "mixins": [

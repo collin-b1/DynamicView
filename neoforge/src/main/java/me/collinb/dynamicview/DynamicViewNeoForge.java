@@ -1,5 +1,6 @@
 package me.collinb.dynamicview;
 
+import me.collinb.dynamicview.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
@@ -14,6 +15,7 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 public class DynamicViewNeoForge {
 
     public DynamicViewNeoForge(IEventBus eventBus) {
+        ModConfig.init();
         DynamicView.init();
     }
 

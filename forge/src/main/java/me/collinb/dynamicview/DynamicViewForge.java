@@ -3,8 +3,8 @@ package me.collinb.dynamicview;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(Constants.MOD_ID)
@@ -19,9 +19,7 @@ public class DynamicViewForge {
 
         @SubscribeEvent
         public static void onClientTick(TickEvent.ClientTickEvent event) {
-            if (event.phase == TickEvent.Phase.START) {
-                DynamicView.preTick(Minecraft.getInstance());
-            }
+            DynamicView.preTick(Minecraft.getInstance());
         }
     }
 }

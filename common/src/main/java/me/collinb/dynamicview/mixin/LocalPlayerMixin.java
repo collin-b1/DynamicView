@@ -20,7 +20,7 @@ public class LocalPlayerMixin {
     private boolean dynamicView$wasSwimming = false;
 
     @Inject(method = "startRiding", at = @At("TAIL"))
-    private void startRiding(Entity pEntity, boolean pForce, CallbackInfoReturnable<Boolean> cir) {
+    private void startRiding(Entity p_108667_, boolean p_108668_, boolean p_435382_, CallbackInfoReturnable<Boolean> cir) {
         DynamicView.setCameraType(CameraType.THIRD_PERSON_BACK);
     }
 

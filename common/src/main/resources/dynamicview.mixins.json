@@ -6,9 +6,9 @@
   "compatibilityLevel": "JAVA_18",
   "client": [
     "CameraMixin",
+    "EntityAccessor",
     "LocalPlayerMixin",
-    "MinecraftMixin",
-    "EntityAccessor"
+    "MinecraftMixin"
   ],
   "server": [],
   "injectors": {

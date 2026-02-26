@@ -17,7 +17,7 @@ public abstract class CameraMixin {
     @Inject(method = "getMaxZoom", at = @At("HEAD"), cancellable = true)
     private void useSmoothZooming(float pMaxZoom, CallbackInfoReturnable<Float> cir) {
         if (DynamicView.isCameraDynamic()) {
-            float partial = MC.getTimer().getGameTimeDeltaPartialTick(true);
+            float partial = MC.getDeltaTracker().getGameTimeDeltaPartialTick(true);
             float smoothDistance = Mth.lerp(
                     partial,
                     CameraAnimation.previousDistance,
