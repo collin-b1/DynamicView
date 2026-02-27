@@ -27,14 +27,14 @@ repositories {
     }
     exclusiveContent {
         forRepositories(
-            maven {
-                name = 'ParchmentMC'
-                url = 'https://maven.parchmentmc.org/'
-            },
-            maven {
-                name = "NeoForge"
-                url = 'https://maven.neoforged.net/releases'
-            }
+                maven {
+                    name = 'ParchmentMC'
+                    url = 'https://maven.parchmentmc.org/'
+                },
+                maven {
+                    name = "NeoForge"
+                    url = 'https://maven.neoforged.net/releases'
+                }
         )
         filter { includeGroup('org.parchmentmc.data') }
     }

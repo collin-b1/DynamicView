@@ -16,6 +16,7 @@ public class ModConfig implements ConfigData {
 
     @ConfigEntry.Gui.CollapsibleObject
     public EnabledContexts enabledContexts = new EnabledContexts();
+
     public static class EnabledContexts {
         public boolean swimming = true;
         public boolean crawling = true;
