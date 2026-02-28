@@ -38,6 +38,11 @@ public class CameraAnimation {
         if (Math.abs(currentDistance - targetDistance) < 0.1f && onAnimationComplete != null) {
             onAnimationComplete.run();
             onAnimationComplete = null;
+            this.currentDistance = this.targetDistance;
         }
+    }
+
+    public boolean isCameraAnimating() {
+        return this.currentDistance != this.targetDistance;
     }
 }

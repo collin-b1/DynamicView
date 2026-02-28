@@ -16,8 +16,11 @@ import static me.collinb.dynamicview.DynamicView.getMC;
 @Mixin(Camera.class)
 public abstract class CameraMixin {
 
-    @Inject(method = "getMaxZoom", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getMaxZoom", at = @At("TAIL"), cancellable = true)
     private void useSmoothZooming(float pMaxZoom, CallbackInfoReturnable<Float> cir) {
+        if (!CameraAnimation.INSTANCE.isCameraAnimating()) {
+            return;
+        }
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).get();
         if (DynamicView.isCameraDynamic() && config.animationEnabled) {
             float partial = getMC().getDeltaTracker().getGameTimeDeltaPartialTick(true);
@@ -26,7 +29,9 @@ public abstract class CameraMixin {
                     CameraAnimation.INSTANCE.previousDistance,
                     CameraAnimation.INSTANCE.currentDistance
             );
-            cir.setReturnValue(smoothDistance);
+            if (smoothDistance <= cir.getReturnValue()) {
+                cir.setReturnValue(smoothDistance);
+            }
         }
     }
 }
