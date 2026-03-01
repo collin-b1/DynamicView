@@ -1,9 +1,9 @@
-package me.collinb.dynamicview;
+package me.collinb.dynamicview.camera;
 
 import me.collinb.dynamicview.config.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 
-public class CameraAnimation {
+public final class CameraAnimation {
     public static CameraAnimation INSTANCE = new CameraAnimation();
 
     private final ModConfig config;
@@ -38,6 +38,11 @@ public class CameraAnimation {
         if (Math.abs(currentDistance - targetDistance) < 0.1f && onAnimationComplete != null) {
             onAnimationComplete.run();
             onAnimationComplete = null;
+            this.currentDistance = this.targetDistance;
         }
+    }
+
+    public boolean isCameraAnimating() {
+        return this.currentDistance != this.targetDistance;
     }
 }

@@ -1,0 +1,51 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - 'master'
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: 21
+
+      - name: Get data from gradle.properties
+        id: mod_data
+        uses: christian-draeger/read-properties@1.1.1
+        with:
+          path: './gradle.properties'
+          properties: 'mod_id version minecraft_version'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Upload Fabric build
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.mod_data.outputs.mod_id }}-fabric-${{ steps.mod_data.outputs.minecraft_version }}-${{ steps.mod_data.outputs.version }}.jar
+          path: fabric/build/libs/${{ steps.mod_data.outputs.mod_id }}-fabric-${{ steps.mod_data.outputs.minecraft_version }}-${{ steps.mod_data.outputs.version }}.jar
+          retention-days: 90
+      - name: Upload NeoForge build
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.mod_data.outputs.mod_id }}-neoforge-${{ steps.mod_data.outputs.minecraft_version }}-${{ steps.mod_data.outputs.version }}.jar
+          path: neoforge/build/libs/${{ steps.mod_data.outputs.mod_id }}-neoforge-${{ steps.mod_data.outputs.minecraft_version }}-${{ steps.mod_data.outputs.version }}.jar
+          retention-days: 90

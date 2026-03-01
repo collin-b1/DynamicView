@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(Entity.class)
-public class EntityAccessor {
+public abstract class EntityAccessor {
     @Shadow
     @Final
     protected static EntityDataAccessor<Pose> DATA_POSE;

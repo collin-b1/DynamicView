@@ -1,5 +1,6 @@
 package me.collinb.dynamicview;
 
+import me.collinb.dynamicview.camera.CameraAnimation;
 import me.collinb.dynamicview.config.ModConfig;
 import me.collinb.dynamicview.platform.Services;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -14,13 +15,13 @@ public class DynamicView {
     public static void setCameraType(CameraType cameraType) {
         if (!isCameraDynamic() && getMC().options.getCameraType() != cameraType) {
             previousCameraType = getMC().options.getCameraType();
-            Constants.LOG.info("Setting previousCameraType={}", getMC().options.getCameraType());
+            Constants.LOG.debug("Setting previousCameraType={}", getMC().options.getCameraType());
             if (cameraType != null) {
                 getMC().options.setCameraType(cameraType);
             }
             CameraAnimation.INSTANCE.currentDistance = 0.0f;
             CameraAnimation.INSTANCE.targetDistance = 4.0f;
-            Constants.LOG.info("Setting cameraType={}", cameraType);
+            Constants.LOG.debug("Setting cameraType={}", cameraType);
         }
     }
 
@@ -31,7 +32,7 @@ public class DynamicView {
                 if (config.animationEnabled) {
                     CameraAnimation.INSTANCE.onAnimationComplete = () -> {
                         getMC().options.setCameraType(previousCameraType);
-                        Constants.LOG.info("Resetting cameraType={}", previousCameraType);
+                        Constants.LOG.debug("Resetting cameraType={}", previousCameraType);
                         previousCameraType = null;
                     };
                 } else {
@@ -43,7 +44,7 @@ public class DynamicView {
     }
 
     public static void init() {
-        Constants.LOG.info("Hello from Common init on {}! we are currently in a {} environment!", Services.PLATFORM.getPlatformName(), Services.PLATFORM.getEnvironmentName());
+        Constants.LOG.debug("Hello from Common init on {}! we are currently in a {} environment!", Services.PLATFORM.getPlatformName(), Services.PLATFORM.getEnvironmentName());
     }
 
     public static void preTick(Minecraft mc) {

@@ -1,9 +1,13 @@
 {
-  "text.autoconfig.dynamicview.option.enabledContexts": "Enabled Contexts",
-  "text.autoconfig.dynamicview.option.enabledContexts.swimming": "Swimming",
-  "text.autoconfig.dynamicview.option.enabledContexts.crawling": "Crawling",
-  "text.autoconfig.dynamicview.option.enabledContexts.flying": "Flying",
-  "text.autoconfig.dynamicview.option.enabledContexts.riding": "Riding",
+  "text.autoconfig.dynamicview.option.contexts": "Contexts",
+  "text.autoconfig.dynamicview.option.contexts.swimmingEnabled": "Swimming Enabled",
+  "text.autoconfig.dynamicview.option.contexts.swimmingCamera": "Swimming Camera",
+  "text.autoconfig.dynamicview.option.contexts.crawlingEnabled": "Crawling Enabled",
+  "text.autoconfig.dynamicview.option.contexts.crawlingCamera": "Crawling Camera",
+  "text.autoconfig.dynamicview.option.contexts.flyingEnabled": "Flying Enabled",
+  "text.autoconfig.dynamicview.option.contexts.flyingCamera": "Flying Camera",
+  "text.autoconfig.dynamicview.option.contexts.ridingEnabled": "Riding Enabled",
+  "text.autoconfig.dynamicview.option.contexts.ridingCamera": "Riding Camera",
   "text.autoconfig.dynamicview.option.animationEnabled": "Enable Zoom Animation",
   "text.autoconfig.dynamicview.option.animationEnterEasing": "Animation Enter Easing",
   "text.autoconfig.dynamicview.option.animationExitEasing": "Animation Exit Easing"
