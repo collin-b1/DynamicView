@@ -40,10 +40,6 @@ repositories {
     }
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.terraformersmc.com/releases/" }
-    maven {
-        name = 'BlameJared'
-        url = 'https://maven.blamejared.com'
-    }
 }
 
 // Declare capabilities on the outgoing configurations.
