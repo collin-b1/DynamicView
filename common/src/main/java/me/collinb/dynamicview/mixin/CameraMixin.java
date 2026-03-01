@@ -1,7 +1,7 @@
 package me.collinb.dynamicview.mixin;
 
-import me.collinb.dynamicview.CameraAnimation;
 import me.collinb.dynamicview.DynamicView;
+import me.collinb.dynamicview.camera.CameraAnimation;
 import me.collinb.dynamicview.config.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.Camera;

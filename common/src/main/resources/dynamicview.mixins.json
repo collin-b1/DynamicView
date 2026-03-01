@@ -7,8 +7,7 @@
   "client": [
     "CameraMixin",
     "EntityAccessor",
-    "LocalPlayerMixin",
-    "MinecraftMixin"
+    "LocalPlayerMixin"
   ],
   "server": [],
   "injectors": {

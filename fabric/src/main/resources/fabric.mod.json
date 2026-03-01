@@ -12,7 +12,7 @@
     "sources": "https://github.com/collin-b1/DynamicView"
   },
   "license": "${license}",
-  "icon": "${mod_id}.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [

@@ -1,9 +1,9 @@
-package me.collinb.dynamicview;
+package me.collinb.dynamicview.camera;
 
 import me.collinb.dynamicview.config.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 
-public class CameraAnimation {
+public final class CameraAnimation {
     public static CameraAnimation INSTANCE = new CameraAnimation();
 
     private final ModConfig config;
