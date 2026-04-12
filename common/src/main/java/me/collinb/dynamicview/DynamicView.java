@@ -13,15 +13,13 @@ public class DynamicView {
     private static CameraType previousCameraType;
 
     public static void setCameraType(CameraType cameraType) {
-        if (!isCameraDynamic() && getMC().options.getCameraType() != cameraType) {
+        if (getMC().options.getCameraType() != cameraType) {
             previousCameraType = getMC().options.getCameraType();
-            Constants.LOG.debug("Setting previousCameraType={}", getMC().options.getCameraType());
             if (cameraType != null) {
                 getMC().options.setCameraType(cameraType);
             }
             CameraAnimation.INSTANCE.currentDistance = 0.0f;
             CameraAnimation.INSTANCE.targetDistance = 4.0f;
-            Constants.LOG.debug("Setting cameraType={}", cameraType);
         }
     }
 
@@ -32,7 +30,6 @@ public class DynamicView {
                 if (config.animationEnabled) {
                     CameraAnimation.INSTANCE.onAnimationComplete = () -> {
                         getMC().options.setCameraType(previousCameraType);
-                        Constants.LOG.debug("Resetting cameraType={}", previousCameraType);
                         previousCameraType = null;
                     };
                 } else {
