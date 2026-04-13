@@ -13,7 +13,7 @@ public class DynamicView {
     private static CameraType previousCameraType;
 
     public static void setCameraType(CameraType cameraType) {
-        if (!isCameraDynamic() && getMC().options.getCameraType() != cameraType) {
+        if (getMC().options.getCameraType() != cameraType) {
             previousCameraType = getMC().options.getCameraType();
             Constants.LOG.debug("Setting previousCameraType={}", getMC().options.getCameraType());
             if (cameraType != null) {
