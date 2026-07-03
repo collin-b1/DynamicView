@@ -12,8 +12,14 @@ import net.minecraft.client.CameraType;
 
 @Config(name = Constants.MOD_ID)
 public class ModConfig implements ConfigData {
+    private static ConfigHolder<ModConfig> holder;
+
     public static void init() {
-        ConfigHolder<ModConfig> holder = AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+        holder = AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+    }
+
+    public static ModConfig get() {
+        return holder.get();
     }
 
     @ConfigEntry.Gui.CollapsibleObject
@@ -40,9 +46,20 @@ public class ModConfig implements ConfigData {
 
     public boolean animationEnabled = true;
 
-    @ConfigEntry.BoundedDiscrete(min = 0, max = 10)
-    public float animationEnterEasing = 0.2f;
+    // Percentage of the remaining distance covered each tick; 100 is instant.
+    @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
+    public int animationEnterSpeed = 20;
 
-    @ConfigEntry.BoundedDiscrete(min = 0, max = 10)
-    public float animationExitEasing = 0.6f;
+    @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
+    public int animationExitSpeed = 60;
+
+    @Override
+    public void validatePostLoad() {
+        animationEnterSpeed = clampSpeed(animationEnterSpeed);
+        animationExitSpeed = clampSpeed(animationExitSpeed);
+    }
+
+    private static int clampSpeed(int speed) {
+        return Math.max(1, Math.min(100, speed));
+    }
 }

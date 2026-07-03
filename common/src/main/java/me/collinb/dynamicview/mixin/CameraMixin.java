@@ -1,37 +1,25 @@
 package me.collinb.dynamicview.mixin;
 
-import me.collinb.dynamicview.DynamicView;
 import me.collinb.dynamicview.camera.CameraAnimation;
-import me.collinb.dynamicview.config.ModConfig;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.Camera;
-import net.minecraft.util.Mth;
+import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import static me.collinb.dynamicview.DynamicView.getMC;
 
 @Mixin(Camera.class)
 public abstract class CameraMixin {
 
     @Inject(method = "getMaxZoom", at = @At("TAIL"), cancellable = true)
     private void useSmoothZooming(float pMaxZoom, CallbackInfoReturnable<Float> cir) {
-        if (!CameraAnimation.INSTANCE.isCameraAnimating()) {
+        CameraAnimation animation = CameraAnimation.INSTANCE;
+        if (!animation.isAnimating()) {
             return;
         }
-        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).get();
-        if (DynamicView.isCameraDynamic() && config.animationEnabled) {
-            float partial = getMC().getDeltaTracker().getGameTimeDeltaPartialTick(true);
-            float smoothDistance = Mth.lerp(
-                    partial,
-                    CameraAnimation.INSTANCE.previousDistance,
-                    CameraAnimation.INSTANCE.currentDistance
-            );
-            if (smoothDistance <= cir.getReturnValue()) {
-                cir.setReturnValue(smoothDistance);
-            }
-        }
+        float partialTick = Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(true);
+        // Scale the vanilla (collision-clamped) distance so the animation
+        // respects walls and any other mod that changes the zoom distance.
+        cir.setReturnValue(animation.getProgress(partialTick) * cir.getReturnValue());
     }
 }

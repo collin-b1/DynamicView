@@ -9,6 +9,6 @@
   "text.autoconfig.dynamicview.option.contexts.ridingEnabled": "Riding Enabled",
   "text.autoconfig.dynamicview.option.contexts.ridingCamera": "Riding Camera",
   "text.autoconfig.dynamicview.option.animationEnabled": "Enable Zoom Animation",
-  "text.autoconfig.dynamicview.option.animationEnterEasing": "Animation Enter Easing",
-  "text.autoconfig.dynamicview.option.animationExitEasing": "Animation Exit Easing"
+  "text.autoconfig.dynamicview.option.animationEnterSpeed": "Enter Animation Speed (%)",
+  "text.autoconfig.dynamicview.option.animationExitSpeed": "Exit Animation Speed (%)"
 }
