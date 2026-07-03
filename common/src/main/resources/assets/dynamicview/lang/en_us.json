@@ -1,4 +1,5 @@
 {
+  "text.autoconfig.dynamicview.title": "Dynamic View Options",
   "text.autoconfig.dynamicview.option.contexts": "Contexts",
   "text.autoconfig.dynamicview.option.contexts.swimmingEnabled": "Swimming Enabled",
   "text.autoconfig.dynamicview.option.contexts.swimmingCamera": "Swimming Camera",
