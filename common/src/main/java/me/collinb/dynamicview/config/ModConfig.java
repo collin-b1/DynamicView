@@ -12,6 +12,7 @@ import net.minecraft.client.CameraType;
 
 @Config(name = Constants.MOD_ID)
 public class ModConfig implements ConfigData {
+    @ConfigEntry.Gui.Excluded
     private static ConfigHolder<ModConfig> holder;
 
     public static void init() {
