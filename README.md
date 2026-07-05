@@ -19,7 +19,6 @@ available in-game via [Mod Menu](https://modrinth.com/mod/modmenu) and
 
 - Minecraft 26.2.x
 - Fabric Loader or NeoForge
-- Cloth Config (bundled with the NeoForge build; required as a separate download on Fabric)
 
 ## Building
 
