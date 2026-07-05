@@ -43,6 +43,21 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.EnumHandler(option = EnumDisplayOption.BUTTON)
         public CameraType ridingCamera = CameraType.THIRD_PERSON_BACK;
 
+        public boolean climbingEnabled = true;
+        @ConfigEntry.Gui.EnumHandler(option = EnumDisplayOption.BUTTON)
+        public CameraType climbingCamera = CameraType.FIRST_PERSON;
+
+        public boolean fishingEnabled = true;
+        @ConfigEntry.Gui.EnumHandler(option = EnumDisplayOption.BUTTON)
+        public CameraType fishingCamera = CameraType.THIRD_PERSON_BACK;
+
+        public boolean aimingEnabled = true;
+        @ConfigEntry.Gui.EnumHandler(option = EnumDisplayOption.BUTTON)
+        public CameraType aimingCamera = CameraType.FIRST_PERSON;
+
+        public boolean lungingEnabled = false;
+        @ConfigEntry.Gui.EnumHandler(option = EnumDisplayOption.BUTTON)
+        public CameraType lungingCamera = CameraType.THIRD_PERSON_BACK;
     }
 
     public boolean animationEnabled = true;

@@ -13,10 +13,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LocalPlayer.class)
 public abstract class LocalPlayerMixin {
 
-    // Polling once per tick (instead of hooking mount/dismount and pose data
-    // updates) catches every way a context can start or stop: failed mount
-    // attempts, leaving water while still in the swimming pose, config changes
-    // mid-context, respawning, and so on.
     @Inject(method = "tick", at = @At("TAIL"))
     private void dynamicView$updateContexts(CallbackInfo ci) {
         LocalPlayer player = (LocalPlayer) (Object) this;
