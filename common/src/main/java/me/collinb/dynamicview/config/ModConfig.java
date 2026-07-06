@@ -76,6 +76,6 @@ public class ModConfig implements ConfigData {
     }
 
     private static int clampSpeed(int speed) {
-        return Math.max(1, Math.min(100, speed));
+        return Math.clamp(speed, 1, 100);
     }
 }
