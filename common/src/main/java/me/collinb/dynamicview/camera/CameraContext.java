@@ -6,8 +6,12 @@ package me.collinb.dynamicview.camera;
  * declared one decides the perspective.
  */
 public enum CameraContext {
+    AIMING,
+    LUNGING,
+    CLIMBING,
     RIDING,
     FLYING,
     SWIMMING,
-    CRAWLING
+    CRAWLING,
+    FISHING,
 }

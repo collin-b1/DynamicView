@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class CameraMixin {
 
     @Inject(method = "getMaxZoom", at = @At("TAIL"), cancellable = true)
-    private void useSmoothZooming(float pMaxZoom, CallbackInfoReturnable<Float> cir) {
+    private void useSmoothZooming(float cameraDist, CallbackInfoReturnable<Float> cir) {
         CameraAnimation animation = CameraAnimation.INSTANCE;
         if (!animation.isAnimating()) {
             return;

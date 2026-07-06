@@ -5,6 +5,7 @@ import me.collinb.dynamicview.camera.CameraContext;
 import me.collinb.dynamicview.config.ModConfig;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.item.BowItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -13,15 +14,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LocalPlayer.class)
 public abstract class LocalPlayerMixin {
 
-    // Polling once per tick (instead of hooking mount/dismount and pose data
-    // updates) catches every way a context can start or stop: failed mount
-    // attempts, leaving water while still in the swimming pose, config changes
-    // mid-context, respawning, and so on.
     @Inject(method = "tick", at = @At("TAIL"))
     private void dynamicView$updateContexts(CallbackInfo ci) {
         LocalPlayer player = (LocalPlayer) (Object) this;
         ModConfig.Contexts contexts = ModConfig.get().contexts;
         boolean swimmingPose = player.getPose() == Pose.SWIMMING;
+        boolean drawingBow = player.isUsingItem() && player.getUseItem().getItem() instanceof BowItem;
 
         DynamicView.setContextActive(CameraContext.RIDING,
                 contexts.ridingEnabled && player.getVehicle() != null,
@@ -35,5 +33,17 @@ public abstract class LocalPlayerMixin {
         DynamicView.setContextActive(CameraContext.CRAWLING,
                 contexts.crawlingEnabled && swimmingPose && !player.isInWater(),
                 contexts.crawlingCamera);
+        DynamicView.setContextActive(CameraContext.CLIMBING,
+                contexts.climbingEnabled && player.onClimbable(),
+                contexts.climbingCamera);
+        DynamicView.setContextActive(CameraContext.AIMING,
+                contexts.aimingEnabled && drawingBow,
+                contexts.aimingCamera);
+        DynamicView.setContextActive(CameraContext.FISHING,
+                contexts.fishingEnabled && player.fishing != null,
+                contexts.fishingCamera);
+        DynamicView.setContextActive(CameraContext.LUNGING,
+                contexts.lungingEnabled && player.isAutoSpinAttack(),
+                contexts.lungingCamera);
     }
 }
