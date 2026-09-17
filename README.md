@@ -17,7 +17,7 @@ available in-game via [Mod Menu](https://modrinth.com/mod/modmenu) and
 
 ## Requirements
 
-- Minecraft 26.2.x
+- Minecraft 26.3.x
 - Fabric Loader or NeoForge
 
 ## Building
